@@ -2604,3 +2604,7 @@ a.credit {
 /* Common Style */
 .section {
   padding-bottom: 0; }
+
+#experience ul {
+  padding-left: 25px;
+}

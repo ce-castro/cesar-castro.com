@@ -265,19 +265,19 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="card-body">
-                    <form action="https://formspree.io/f/xayvdrkw" name="simple-contact-form" accept-charset="utf-8" method="post" id="fs-frm">
+                    <form name="simple-contact-form" method="post" id="fs-frm" action="javascript:submitform()">
                       <div class="p pb-3"><strong>Feel free to contact me </strong></div>
                       <div class="row mb-3">
                         <div class="col">
                           <div class="input-group"><span class="input-group-addon"><i class="fa fa-user-circle"></i></span>
-                            <input class="form-control" type="text" name="name" placeholder="Name" required="required"/>
+                            <input class="form-control" type="text" id="contactName" name="contactName" placeholder="Name" required="required"/>
                           </div>
                         </div>
                       </div>
                       <div class="row mb-3">
                         <div class="col">
                           <div class="input-group"><span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                            <input class="form-control" placeholder="E-mail" required="required"  type="email" name="_replyto" id="email-address" placeholder="email@domain.tld" />
+                            <input class="form-control" placeholder="E-mail" required="required"  type="email" name="contactEmail" id="contactEmail" placeholder="email@domain.tld" />
                           </div>
                         </div>
                       </div>
@@ -315,7 +315,27 @@
     </div>
   </div>
 </div></div>
+</div>
+
+<div class="modal fade modal-mini modal-primary" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title" id="exampleModalLongTitle">Message</span>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+  <div class="modal-body" id="modalBody">
+    <h5 style="margin:0px; font-size: 18px;" id="headerMessage"></h5>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" data-dismiss="modal" style="padding: 5px 10px">Close</button>
+  </div>
+  </div>
+  </div>
+  </div>
+
     <footer class="footer">
       <div class="h4 title text-center">Cesar Castro</div>
       <div class="text-center text-muted">
@@ -328,5 +348,23 @@
     <script src="js/now-ui-kit.js?ver=1.1.0"></script>
     <script src="js/aos.js?ver=1.1.0"></script>
     <script src="scripts/main.js?ver=1.1.0"></script>
+    <script>
+      function submitform(){
+        var xhr = new XMLHttpRequest();
+        var url = "/api/send-contact-email";
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+          $('#myModal').modal('show');
+          $('#headerMessage').html(xhr.responseText);
+        };
+        var data = JSON.stringify({
+          "contactName": $('#contactName').val(), 
+          "contactEmail": $('#contactEmail').val(), 
+          "message": $('#message').val()
+        });
+        xhr.send(data);
+      }
+    </script>
   </body>
 </html>

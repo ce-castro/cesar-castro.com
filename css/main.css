@@ -1,3 +1,20 @@
+#modalBody {
+  text-align: center;
+}
+.modal-header {
+  color: #FFF;
+  background-color: #107291;
+  font-size: 16px;
+  padding: 8px;
+}
+.modal-footer {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.close {
+  color: #FFF;
+  opacity: 1;
+}
 .btn,
 .navbar .navbar-nav > a.btn {
   border-width: 2px;
@@ -916,7 +933,7 @@ body, li {
   padding-bottom: .9rem;
   position: relative; }
   .alert.alert-success {
-    background-color: rgba(24, 206, 15, 0.8); }
+    background-color: rgba(13, 168, 5, 0.979); }
   .alert.alert-danger {
     background-color: rgba(255, 54, 54, 0.8); }
   .alert.alert-warning {

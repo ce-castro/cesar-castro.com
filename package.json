@@ -1,0 +1,10 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "Personal Website to show CV",
+  "author": "Cesar Castro",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "mailgun-js": "^0.22.0"
+  }
+}
